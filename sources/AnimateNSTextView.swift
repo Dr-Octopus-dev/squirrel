@@ -16,6 +16,7 @@ class AnimateNSTextView: NSTextField {
   var animationDuration: Double = 0.2
   var animationInterruptType = "smooth"
   private var oldTextLayer = CATextLayer()
+  var i = 0
   
   //转换传入的字符串为CAMediaTimingFunctionName格式
   var animationTypeStr: String = "easeOut" {
@@ -105,6 +106,7 @@ class AnimateNSTextView: NSTextField {
       oldLayerAnimation.duration = 0.2
       oldLayerAnimation.fillMode = .forwards
       oldLayerAnimation.isRemovedOnCompletion = true
+      oldLayerAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut) // 动画缓动函数
       oldTextLayer.add(oldLayerAnimation, forKey: nil)
       
       
@@ -112,9 +114,10 @@ class AnimateNSTextView: NSTextField {
       let layerAnimation = CABasicAnimation(keyPath: "position.y")
       layerAnimation.fromValue = self.frame.origin.y - self.frame.height*CGFloat(isTurning)
       layerAnimation.toValue = self.frame.origin.y // 向上移动20个单位
-      layerAnimation.duration = 0.2
+      layerAnimation.duration = 0.3 +  CGFloat(i) * 0.2
 //      layerAnimation.fillMode = .forwards
       layerAnimation.isRemovedOnCompletion = true
+      layerAnimation.timingFunction = CAMediaTimingFunction(name: .easeIn) // 动画缓动函数
       newTextLayer.add(layerAnimation, forKey: nil)
       
       

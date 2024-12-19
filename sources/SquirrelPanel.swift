@@ -628,7 +628,8 @@ private extension SquirrelPanel {
         animateNSTextView.animationTypeStr = theme.candidateAnimationType
         animateNSTextView.animationDuration = theme.candidateAnimationDuration
         animateNSTextView.animationInterruptType = theme.candidateAnimationInterruptType
-        animateNSTextView.page = page 
+        animateNSTextView.page = page
+        animateNSTextView.i = i
         //        animateNSTextView.textContentStorage?.attributedString = lines[i] //如果是NSTextView用这个
         animateNSTextView.attributedStringValue = lines[i] //更新视图字符串
 //        print("更新前lines[i]:[\(lines[i].string)]")
